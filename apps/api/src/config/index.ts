@@ -22,8 +22,6 @@ const schema = z.object({
   CLOUD_STORAGE_BUCKET: z.string().optional(),
   CLOUD_STORAGE_ACCESS_KEY_ID: z.string().optional(),
   CLOUD_STORAGE_SECRET_ACCESS_KEY: z.string().optional(),
-  GOOGLE_CLIENT_ID: z.string().optional(),
-  GOOGLE_CLIENT_SECRET: z.string().optional(),
 });
 
 type Config = z.infer<typeof schema>;

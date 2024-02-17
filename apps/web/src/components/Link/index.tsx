@@ -33,24 +33,21 @@ const Link: FC<LinkProps> = ({
   switch (type) {
     case 'router':
       return (
-        <NextLink
-          className={cx({ [classes.nextLinkUnderlineNone]: !underline })}
+        <Anchor
           href={href}
-          passHref
+          className={cx(classes.link, {
+            [classes.disabled]: disabled,
+            [classes.nextLinkUnderlineNone]: !underline,
+          })}
+          size={size}
+          inherit={inherit}
+          underline={underline ? 'always' : 'never'}
+          ta={align}
+          component={NextLink}
         >
-          <Anchor
-            className={cx(classes.link, {
-              [classes.disabled]: disabled,
-            })}
-            size={size}
-            inherit={inherit}
-            underline={underline ? 'always' : 'never'}
-            ta={align}
-          >
-            {icon}
-            {children}
-          </Anchor>
-        </NextLink>
+          {icon}
+          {children}
+        </Anchor>
       );
 
     case 'url':

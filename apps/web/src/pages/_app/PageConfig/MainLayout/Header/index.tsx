@@ -1,5 +1,5 @@
 import { memo, FC } from 'react';
-import { AppShellHeader as LayoutHeader, Container } from '@mantine/core';
+import { AppShellHeader as LayoutHeader, Container, Group } from '@mantine/core';
 
 import { accountApi } from 'resources/account';
 
@@ -22,17 +22,21 @@ const Header: FC = () => {
     <LayoutHeader>
       {account.isShadow && <ShadowLoginBanner email={account.email} />}
       <Container
-        className={classes.header}
-        mih={72}
         px={32}
         py={0}
-        display="flex"
         fluid
       >
-        <Link type="router" href={RoutePath.Home}>
-          <LogoImage />
-        </Link>
-        <UserMenu />
+        <Group
+          className={classes.header}
+          mih={72}
+          justify="space-between"
+        >
+          <Link type="router" href={RoutePath.Home}>
+            <LogoImage />
+          </Link>
+          <UserMenu />
+        </Group>
+
       </Container>
     </LayoutHeader>
   );
