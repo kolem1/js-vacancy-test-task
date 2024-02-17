@@ -1,0 +1,10 @@
+.root {
+  width: auto;
+  border-radius: var(--mantine-radius-xl);
+
+  color: var(--nl-color);
+
+  &:hover {
+    background: var(--nl-hover);
+  }
+}

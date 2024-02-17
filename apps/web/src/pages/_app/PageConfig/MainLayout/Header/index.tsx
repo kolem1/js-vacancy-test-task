@@ -10,6 +10,7 @@ import { LogoImage } from 'public/images';
 
 import UserMenu from './components/UserMenu';
 import ShadowLoginBanner from './components/ShadowLoginBanner';
+import NavMenu from './components/NavMenu';
 
 import classes from './index.module.css';
 
@@ -34,6 +35,9 @@ const Header: FC = () => {
           <Link type="router" href={RoutePath.Home}>
             <LogoImage />
           </Link>
+
+          <NavMenu />
+
           <UserMenu />
         </Group>
 

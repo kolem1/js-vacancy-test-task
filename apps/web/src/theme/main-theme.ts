@@ -21,6 +21,11 @@ const mainTheme = createTheme({
   primaryShade: 6,
   defaultRadius: 'md',
   components,
+  black: '#201F22',
+  other: {
+    black: { 50: '#FCFCFC', 100: '#ECECEE', 200: '#CFCFCF', 300: '#A3A3A3', 400: '#767676', 600: '#201F22' },
+    blue: { 10: '#EAF1FD', 500: '#5692EF', 600: '#2B77EB', 700: '#235FBC' },
+  },
 });
 
 export default mainTheme;

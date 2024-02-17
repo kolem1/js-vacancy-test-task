@@ -1,41 +1,31 @@
-import Link from 'next/link';
 import { memo, FC } from 'react';
-import { Menu } from '@mantine/core';
-import { IconUserCircle, IconLogout } from '@tabler/icons-react';
+import { Group, UnstyledButton, useMantineTheme, Text } from '@mantine/core';
 
 import { accountApi } from 'resources/account';
 
-import { RoutePath } from 'routes';
-
-import MenuToggle from '../MenuToggle';
+import { CartIcon } from 'public/icons';
+import { IconLogout } from '@tabler/icons-react';
 
 import classes from './index.module.css';
 
 const UserMenu: FC = () => {
   const { mutate: signOut } = accountApi.useSignOut();
 
-  return (
-    <Menu>
-      <Menu.Target>
-        <MenuToggle />
-      </Menu.Target>
-      <Menu.Dropdown className={classes.dropdown}>
-        <Menu.Item
-          component={Link}
-          href={RoutePath.Profile}
-          leftSection={<IconUserCircle size={16} />}
-        >
-          Profile settings
-        </Menu.Item>
+  const theme = useMantineTheme();
 
-        <Menu.Item
-          onClick={() => signOut()}
-          leftSection={<IconLogout size={16} />}
-        >
-          Log out
-        </Menu.Item>
-      </Menu.Dropdown>
-    </Menu>
+  return (
+    <Group gap="xl" align="center">
+      <UnstyledButton className={classes.cartButton}>
+        <CartIcon />
+        <Text span size="sm" className={classes.count} bg={theme.other.blue[600]}>
+          3
+        </Text>
+      </UnstyledButton>
+
+      <UnstyledButton onClick={() => signOut()}>
+        <IconLogout color={theme.other.black[400]} size={40} stroke={1} />
+      </UnstyledButton>
+    </Group>
   );
 };
 
