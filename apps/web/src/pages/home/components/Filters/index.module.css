@@ -1,0 +1,6 @@
+.root {
+  background: var(--mantine-color-white);
+  border: 1px solid var(--mantine-black-100);
+  border-radius: rem(12px);
+  padding: var(--mantine-spacing-lg);
+}

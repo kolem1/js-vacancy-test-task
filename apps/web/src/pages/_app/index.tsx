@@ -10,6 +10,7 @@ import '@mantine/core/styles.css';
 
 import queryClient from 'query-client';
 import mainTheme from 'theme/main-theme';
+import variablesResolver from 'theme/variables-resolver';
 
 import PageConfig from './PageConfig';
 
@@ -21,6 +22,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => (
     <QueryClientProvider client={queryClient}>
       <MantineProvider
         theme={mainTheme}
+        cssVariablesResolver={variablesResolver}
       >
         <ModalsProvider>
           <Notifications autoClose={10000} />

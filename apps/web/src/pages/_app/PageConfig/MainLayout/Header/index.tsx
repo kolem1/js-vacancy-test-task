@@ -20,7 +20,7 @@ const Header: FC = () => {
   if (!account) return null;
 
   return (
-    <LayoutHeader>
+    <LayoutHeader className={classes.header} withBorder={false}>
       {account.isShadow && <ShadowLoginBanner email={account.email} />}
       <Container
         px={32}
@@ -28,7 +28,6 @@ const Header: FC = () => {
         fluid
       >
         <Group
-          className={classes.header}
           mih={72}
           justify="space-between"
         >

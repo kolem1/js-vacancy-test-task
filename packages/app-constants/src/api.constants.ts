@@ -1,4 +1,5 @@
 export const DATABASE_DOCUMENTS = {
+  PRODUCTS: 'products',
   USERS: 'users',
   TOKENS: 'tokens',
 };
