@@ -4,9 +4,11 @@ import { Group, NavLink } from '@mantine/core';
 
 import { useRouter } from 'next/router';
 
+import { RoutePath } from 'routes';
+
 const links = [
-  { link: '/', label: 'Marketplace' },
-  { link: '/your-products', label: 'Your Products' },
+  { link: RoutePath.Home, label: 'Marketplace' },
+  { link: RoutePath.YourProducts, label: 'Your Products' },
 ];
 
 const NavMenu: FC = () => {

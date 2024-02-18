@@ -1,0 +1,17 @@
+.newPrdocutCard {
+  justify-content: center;
+  color: var(--mantine-blue-600);
+}
+
+.plus {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: rem(40px);
+  height: rem(40px);
+  border-radius: 50%;
+
+  background: var(--mantine-blue-600);
+  color: var(--mantine-color-white)
+}
