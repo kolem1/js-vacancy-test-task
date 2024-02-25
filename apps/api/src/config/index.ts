@@ -15,6 +15,8 @@ const schema = z.object({
   REDIS_URI: z.string(),
   API_URL: z.string(),
   WEB_URL: z.string(),
+  FIREBASE_CREDENTIALS: z.string(),
+  FIREBASE_STORAGE_BUCKET: z.string(),
   SENDGRID_API_KEY: z.string().optional(),
   ADMIN_KEY: z.string().optional(),
   MIXPANEL_API_KEY: z.string().optional(),
@@ -22,6 +24,7 @@ const schema = z.object({
   CLOUD_STORAGE_BUCKET: z.string().optional(),
   CLOUD_STORAGE_ACCESS_KEY_ID: z.string().optional(),
   CLOUD_STORAGE_SECRET_ACCESS_KEY: z.string().optional(),
+
 });
 
 type Config = z.infer<typeof schema>;

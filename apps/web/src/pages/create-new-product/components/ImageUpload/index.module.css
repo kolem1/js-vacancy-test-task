@@ -1,0 +1,9 @@
+.image {
+  position: relative;
+  width: rem(180px);
+  height: rem(180px);
+}
+
+.error {
+  color: var(--mantine-color-error);
+}

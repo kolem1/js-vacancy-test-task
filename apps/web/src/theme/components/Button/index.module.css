@@ -6,4 +6,15 @@
   &:active {
     background: var(--button-active, var(--button-bg));
   }
+
+  &[data-variant='secondary'] {
+    &:hover {
+      border-color: var(--mantine-blue-500);
+    }
+
+    &:active {
+      border-color: var(--mantine-blue-500);
+      color: var(--mantine-blue-700);
+    }
+  }
 }

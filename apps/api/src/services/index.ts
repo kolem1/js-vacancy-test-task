@@ -4,6 +4,7 @@ import cloudStorageService from './cloud-storage/cloud-storage.service';
 import emailService from './email/email.service';
 import rateLimitService from './rate-limit/rate-limit.service';
 import socketService from './socket/socket.service';
+import firebaseService from './firebase/firebase.service';
 
 export {
   analyticsService,
@@ -11,5 +12,6 @@ export {
   cloudStorageService,
   emailService,
   rateLimitService,
-  socketService,
+  socketService, 
+  firebaseService,
 };
