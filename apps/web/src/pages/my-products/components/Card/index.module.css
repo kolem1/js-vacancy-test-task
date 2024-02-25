@@ -1,0 +1,30 @@
+.priceTitle {
+  color: var(--mantine-black-300);
+  font-weight: 500;
+}
+
+.card {
+  border: rem(1px) solid var(--mantine-black-100);
+}
+
+.price {
+  font-weight: 700;
+}
+
+.badge {
+  position: absolute;
+  bottom: rem(16px);
+  right: rem(16px);
+  left: auto;
+  top: auto;
+}
+
+.delete {
+  position: absolute;
+  top: rem(16px);
+  right: rem(16px);
+  left: auto;
+  width: rem(32px);
+  height: rem(32px);
+  color: var(--mantine-black-300);
+}

@@ -8,7 +8,7 @@ import { RoutePath } from 'routes';
 
 const links = [
   { link: RoutePath.Home, label: 'Marketplace' },
-  { link: RoutePath.YourProducts, label: 'Your Products' },
+  { link: RoutePath.MyProducts, label: 'Your Products' },
 ];
 
 const NavMenu: FC = () => {

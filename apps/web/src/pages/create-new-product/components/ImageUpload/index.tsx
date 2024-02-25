@@ -6,6 +6,7 @@ import {
 import {
   Box,
   Button,
+  Center,
   FileButton,
   Group,
   Image,
@@ -55,7 +56,7 @@ const ImageUpload = <T extends FieldValues>({
         >
           {(buttonProps) => <Button variant="secondary" type="button" {...buttonProps}>Upload image</Button>}
         </FileButton>
-        {value && <Text span>{value.name}</Text>}
+        {value && <Center><Text span>{value.name}</Text></Center>}
         {fieldState.error && <Text className={classes.error} span>{fieldState.error.message}</Text>}
       </Stack>
     </Group>

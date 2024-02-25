@@ -4,3 +4,4 @@ export { default as PasswordInput } from './PasswordInput';
 export { default as Select } from './Select';
 export { default as TextInput } from './TextInput';
 export { default as NavLink } from './NavLink';
+export { default as Badge } from './Badge';

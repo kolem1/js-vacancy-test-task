@@ -68,7 +68,7 @@ const CreateNewProduct: NextPage = () => {
           </Stack>
           <Group justify="center">
             <Button onClick={createAnother}>Create another one</Button>
-            <Button variant="secondary" component={NextLink} href={RoutePath.YourProducts}>
+            <Button variant="secondary" component={NextLink} href={RoutePath.MyProducts}>
               Go to your products
             </Button>
           </Group>

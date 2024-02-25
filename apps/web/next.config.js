@@ -30,4 +30,14 @@ module.exports = {
     ignoreDuringBuilds: true,
   },
   transpilePackages: ['types', 'schemas', 'app-constants'],
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'firebasestorage.googleapis.com',
+        port: '',
+        pathname: `/v0/b/${dotenvConfig.parsed.FIREBASE_BUCKET}/o/**`,
+      },
+    ],
+  },
 };
