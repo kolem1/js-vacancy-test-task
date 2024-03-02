@@ -61,7 +61,7 @@ const CreateNewProduct: NextPage = () => {
         <Head><title>Create New Product</title></Head>
         <Stack gap="lg">
           <Title order={1} fz="xl" fw={700}>Create New Product</Title>
-          <Stack maw={rem(rem(694))} mih={rem(366)}>
+          <Stack maw={rem(rem(694))} mih={rem(366)} justify="center">
             <Center>
               <Text size="xl" fw={700}>Product has been successfully created!</Text>
             </Center>

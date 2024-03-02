@@ -30,3 +30,15 @@ export function useRemove() {
     },
   });
 }
+
+export function useList<T>(params: T) {
+  const list = () => apiService.get('/products', params);
+
+  interface ProductListResponse {
+    count: number;
+    items: Product[];
+    totalPages: number;
+  }
+
+  return useQuery<ProductListResponse>(['products', params], list);
+}

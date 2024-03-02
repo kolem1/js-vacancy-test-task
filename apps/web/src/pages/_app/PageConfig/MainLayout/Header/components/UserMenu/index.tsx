@@ -23,7 +23,7 @@ const UserMenu: FC = () => {
       </UnstyledButton>
 
       <UnstyledButton onClick={() => signOut()}>
-        <IconLogout color={theme.other.black[400]} size={40} stroke={1} />
+        <IconLogout display="block" color={theme.other.black[400]} size={40} stroke={1} />
       </UnstyledButton>
     </Group>
   );

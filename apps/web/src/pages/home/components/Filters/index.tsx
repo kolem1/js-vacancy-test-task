@@ -1,11 +1,32 @@
-import { Box, Group, Stack, Text, TextInput, Title } from '@mantine/core';
-import { FC, useState } from 'react';
+import { Box, Group, NumberInput, Stack, Text, Title } from '@mantine/core';
+import { FC, useLayoutEffect, useState } from 'react';
 
+import { useDebouncedValue } from '@mantine/hooks';
 import classes from './index.module.css';
 
-const Filters: FC = () => {
-  const [from, setFrom] = useState<string>();
-  const [to, setTo] = useState<string>('12');
+export interface FiltersValue {
+  price: {
+    from: number;
+    to: number;
+  }
+}
+
+interface FiltersProps {
+  onChange: (filtersValue: FiltersValue) => void
+}
+
+const Filters: FC<FiltersProps> = ({ onChange }) => {
+  const [from, setFrom] = useState<string | number>(0);
+  const [to, setTo] = useState<string | number>(0);
+
+  const [debouncedFrom] = useDebouncedValue(from, 500);
+  const [debouncedTo] = useDebouncedValue(to, 500);
+
+  useLayoutEffect(() => {
+    onChange({ price: {
+      from: +debouncedFrom, to: +debouncedTo,
+    } });
+  }, [debouncedFrom, debouncedTo, onChange]);
 
   return (
     <Stack className={classes.root} gap="xl">
@@ -15,8 +36,25 @@ const Filters: FC = () => {
       <Box>
         <Text fw={700} mb="sm">Price</Text>
         <Group wrap="nowrap">
-          <TextInput value={from} size="sm" leftSectionWidth={54} leftSection="From:" onChange={(e) => setFrom(e.currentTarget.value)} />
-          <TextInput value={to} size="sm" leftSection="To:" onChange={(e) => setTo(e.currentTarget.value)} />
+          <NumberInput
+            value={from}
+            size="sm"
+            hideControls
+            suffix="$"
+            allowNegative={false}
+            leftSectionWidth={54}
+            leftSection="From:"
+            onChange={setFrom}
+          />
+          <NumberInput
+            value={to}
+            size="sm"
+            suffix="$"
+            allowNegative={false}
+            hideControls
+            leftSection="To:"
+            onChange={setTo}
+          />
         </Group>
       </Box>
     </Stack>
