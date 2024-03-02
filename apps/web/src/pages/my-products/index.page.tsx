@@ -8,8 +8,8 @@ import { RoutePath } from 'routes';
 import { PlusIcon } from 'public/icons';
 import { productApi } from 'resources/product';
 import { Product } from 'types';
+import { Card } from 'components';
 import classes from './index.module.css';
-import Card from '../../components/Card';
 
 const YourProducts: NextPage = () => {
   const { data, isLoading: isProductsLoading } = productApi.useListForUser();

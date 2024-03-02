@@ -33,7 +33,7 @@ const CreateNewProduct: NextPage = () => {
     { resolver: zodResolver(schema) },
   );
 
-  const { mutate: createProduct, isLoading: isProductLOading } = productApi.useCreate();
+  const { mutate: createProduct, isLoading: isProductLoading } = productApi.useCreate();
 
   const onSubmit = (data: CreateProductParams) => {
     const body = new FormData();
@@ -102,7 +102,7 @@ const CreateNewProduct: NextPage = () => {
                 placeholder="Enter price of the product"
               />
             </Stack>
-            <Center><Button loading={isProductLOading} type="submit">Upload Product</Button></Center>
+            <Center><Button loading={isProductLoading} type="submit">Upload Product</Button></Center>
           </Stack>
         </form>
       </Stack>

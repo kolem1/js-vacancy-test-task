@@ -1,29 +1,40 @@
-import { memo, FC } from 'react';
-import { Group, UnstyledButton, useMantineTheme, Text } from '@mantine/core';
-
+import { memo, FC, useCallback } from 'react';
+import { Group, UnstyledButton, Text } from '@mantine/core';
+import NextLink from 'next/link';
 import { accountApi } from 'resources/account';
 
 import { CartIcon } from 'public/icons';
 import { IconLogout } from '@tabler/icons-react';
+import cx from 'clsx';
 
+import { RoutePath } from 'routes';
+import { useRouter } from 'next/router';
 import classes from './index.module.css';
 
 const UserMenu: FC = () => {
+  const { pathname } = useRouter();
+
   const { mutate: signOut } = accountApi.useSignOut();
 
-  const theme = useMantineTheme();
+  const handleSignOut = useCallback(() => signOut(), [signOut]);
 
   return (
     <Group gap="xl" align="center">
-      <UnstyledButton className={classes.cartButton}>
-        <CartIcon />
-        <Text span size="sm" className={classes.count} bg={theme.other.blue[600]}>
+      <UnstyledButton
+        href={RoutePath.Cart}
+        component={NextLink}
+        className={cx(classes.cartButton, {
+          [classes.active]: pathname.startsWith(RoutePath.Cart),
+        })}
+      >
+        <CartIcon className={classes.cartIcon} />
+        <Text span size="sm" className={classes.count}>
           3
         </Text>
       </UnstyledButton>
 
-      <UnstyledButton onClick={() => signOut()}>
-        <IconLogout display="block" color={theme.other.black[400]} size={40} stroke={1} />
+      <UnstyledButton onClick={handleSignOut}>
+        <IconLogout className={classes.logOutIcon} display="block" size={40} stroke={1} />
       </UnstyledButton>
     </Group>
   );

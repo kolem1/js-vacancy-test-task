@@ -16,7 +16,7 @@ import {
 import { useDebouncedValue, useInputState } from '@mantine/hooks';
 
 import { productApi } from 'resources/product';
-import Card from 'components/Card';
+import { Card } from 'components';
 import { Product } from 'types';
 import { PER_PAGE, selectOptions } from './constants';
 

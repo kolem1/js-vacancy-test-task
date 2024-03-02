@@ -4,6 +4,24 @@
   align-items: end;
   width: rem(40px);
   height: rem(40px);
+  color: var(--mantine-blue-600);
+
+  &.active .cartIcon,
+  &:hover .cartIcon {
+    fill: var(--mantine-blue-600)
+  }
+}
+
+.cartIcon {
+  fill: var(--mantine-black-400)
+}
+
+.logOutIcon {
+  stroke: var(--mantine-black-400);
+
+  &:hover {
+    stroke: var(--mantine-blue-600);
+  }
 }
 
 .count {
@@ -15,6 +33,7 @@
   justify-content: center;
   width: rem(21px);
   height: rem(21px);
+  background: var(--mantine-blue-600);
   color: var(--mantine-color-white);
   border-radius: 50%;
 }
