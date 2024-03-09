@@ -9,12 +9,14 @@ import cx from 'clsx';
 
 import { RoutePath } from 'routes';
 import { useRouter } from 'next/router';
+import { cartApi } from 'resources/cart';
 import classes from './index.module.css';
 
 const UserMenu: FC = () => {
   const { pathname } = useRouter();
 
   const { mutate: signOut } = accountApi.useSignOut();
+  const { data: cartCount } = cartApi.useCount();
 
   const handleSignOut = useCallback(() => signOut(), [signOut]);
 
@@ -28,9 +30,11 @@ const UserMenu: FC = () => {
         })}
       >
         <CartIcon className={classes.cartIcon} />
+        {cartCount && cartCount.count > 0 && (
         <Text span size="sm" className={classes.count}>
-          3
+          {cartCount.count}
         </Text>
+        )}
       </UnstyledButton>
 
       <UnstyledButton onClick={handleSignOut}>

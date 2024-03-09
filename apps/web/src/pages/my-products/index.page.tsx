@@ -9,6 +9,7 @@ import { PlusIcon } from 'public/icons';
 import { productApi } from 'resources/product';
 import { Product } from 'types';
 import { Card } from 'components';
+import { useCallback } from 'react';
 import classes from './index.module.css';
 
 const YourProducts: NextPage = () => {
@@ -16,7 +17,10 @@ const YourProducts: NextPage = () => {
 
   const { mutate: remove, isLoading: isDeleteLoading } = productApi.useRemove();
 
-  const handleDelete = (product: Product) => () => remove(product._id);
+  const handleDelete = useCallback(
+    (product: Product) => remove(product._id),
+    [remove],
+  );
 
   return (
     <>

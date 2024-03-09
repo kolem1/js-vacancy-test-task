@@ -1,4 +1,5 @@
 export const DATABASE_DOCUMENTS = {
+  CART_PRODUCTS: 'cartProducts',
   PRODUCTS: 'products',
   USERS: 'users',
   TOKENS: 'tokens',

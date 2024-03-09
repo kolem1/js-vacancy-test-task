@@ -18,6 +18,7 @@ import { useDebouncedValue, useInputState } from '@mantine/hooks';
 import { productApi } from 'resources/product';
 import { Card } from 'components';
 import { Product } from 'types';
+import { cartApi } from 'resources/cart';
 import { PER_PAGE, selectOptions } from './constants';
 
 import classes from './index.module.css';
@@ -78,16 +79,18 @@ const Home: NextPage = () => {
     }));
   }, []);
 
-  const handleAddToCart = useCallback((product: Product) => {
-    console.log(product);
-  }, []);
-
   useLayoutEffect(() => {
     setPageIndex(1);
     setParams((prev) => ({ ...prev, page: 1, searchValue: debouncedSearch, perPage: PER_PAGE }));
   }, [debouncedSearch]);
 
   const { data, isLoading: isListLoading } = productApi.useList(params);
+
+  const { mutate: addToCart } = cartApi.useAdd();
+
+  const handleAddToCart = useCallback((product: Product) => {
+    addToCart({ productId: product._id });
+  }, [addToCart]);
 
   return (
     <>

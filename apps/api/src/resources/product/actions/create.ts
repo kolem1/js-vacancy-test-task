@@ -7,12 +7,14 @@ import multer from '@koa/multer';
 import { Next, Request } from 'koa';
 import { firebaseService } from 'services';
 import { productService } from 'resources/product';
+import { validationUtil } from 'utils';
 
 const upload = multer();
 
 const schema = z.object({
   title: z.string().min(1, 'Please enter the title').max(100),
-  price: z.string().min(1, 'Please enter the price').transform(Number).refine((value) => !Number.isNaN(value), 'Price should be a number'),
+  price: validationUtil.requiredNumberFromString('Price'),
+  availableCount: validationUtil.requiredNumberFromString('Available Amount'),
 });
 
 type ValidatedData = z.infer<typeof schema>;
@@ -26,7 +28,7 @@ async function validator(ctx: AppKoaContext<ValidatedData, Request>, next: Next)
 }
 
 async function handler(ctx: AppKoaContext<ValidatedData>) {
-  const { title, price } = ctx.validatedData;
+  const { title, price, availableCount } = ctx.validatedData;
   const { file } = ctx.request;
   const { user } = ctx.state;
 
@@ -38,6 +40,7 @@ async function handler(ctx: AppKoaContext<ValidatedData>) {
     price,
     ownerId: user._id,
     imageUrl,
+    availableCount,
   });
 
   ctx.body = {

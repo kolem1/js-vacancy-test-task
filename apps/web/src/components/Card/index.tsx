@@ -19,7 +19,7 @@ interface CardProps {
 
 const Card = ({ type, product, isDeleteLoading, onDelete, onAddToCart }: CardProps) => {
   const handleDelete = useCallback(() => {
-    if (onDelete) onDelete(product);
+    if (onDelete) { onDelete(product); }
   }, [product, onDelete]);
 
   const handleAddToCart = useCallback(() => {

@@ -1,0 +1,22 @@
+.quantityControl {
+  width: rem(24px);
+  height: rem(24px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:disabled {
+    color: var(--mantine-black-200);
+  }
+}
+
+.remove {
+  display: flex;
+  align-items: center;
+  color: var(--mantine-black-400);
+  font-size: var(--mantine-font-size-md);
+
+  span {
+    margin-left: rem(5px);
+  }
+}

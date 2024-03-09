@@ -17,7 +17,6 @@ interface TbodyProps {
 
 const Tbody: FC<TbodyProps> = ({ isSelectable, rows, flexRender }) => {
   const { colors } = useMantineTheme();
-
   return (
     <Table.Tbody>
       {rows.map((row) => (
@@ -31,7 +30,7 @@ const Tbody: FC<TbodyProps> = ({ isSelectable, rows, flexRender }) => {
           }}
         >
           {row.getVisibleCells().map((cell) => (
-            <Table.Td key={cell.id}>
+            <Table.Td w={`${cell.column.getSize()}%`} key={cell.id}>
               {flexRender(cell.column.columnDef.cell, cell.getContext())}
             </Table.Td>
           ))}

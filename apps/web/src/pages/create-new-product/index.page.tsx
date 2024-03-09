@@ -15,6 +15,7 @@ const schema = z.object({
   title: z.string().min(1, 'Please enter the title').max(100),
   image: z.custom<File>().refine((data) => data != null && data instanceof File, 'Please upload the image'),
   price: z.string().min(1, 'Please enter the price').refine((value) => !Number.isNaN(Number(value)), 'Price should be a number'),
+  availableAmount: z.string().min(1, 'Please enter the available amount').refine((value) => !Number.isNaN(Number(value)), 'Available amount should be a number'),
 });
 
 type CreateProductParams = z.infer<typeof schema>;
@@ -41,6 +42,7 @@ const CreateNewProduct: NextPage = () => {
     body.append('image', data.image, data.image.name);
     body.append('title', data.title);
     body.append('price', data.price);
+    body.append('availableCount', data.availableAmount);
 
     createProduct(body, {
       onSuccess: () => {
@@ -100,6 +102,12 @@ const CreateNewProduct: NextPage = () => {
                 {...register('price')}
                 error={errors.price?.message}
                 placeholder="Enter price of the product"
+              />
+              <TextInput
+                label="Available Amount"
+                {...register('availableAmount')}
+                error={errors.availableAmount?.message}
+                placeholder="Enter available amount of product"
               />
             </Stack>
             <Center><Button loading={isProductLoading} type="submit">Upload Product</Button></Center>

@@ -13,4 +13,9 @@ const optionalNumberFromString = () =>z.string().nullish().transform((arg, ctx)=
   return value;
 });
 
-export default { optionalNumberFromString };
+const requiredNumberFromString = (name: string) => z.string()
+  .min(1, `Please enter the ${name}`)
+  .transform(Number)
+  .refine((value) => !Number.isNaN(value), `${name} should be a number`);
+
+export default { optionalNumberFromString, requiredNumberFromString };

@@ -1,4 +1,4 @@
-import { Center, Group, Image, Stack, Title, Text, Button } from '@mantine/core';
+import { Center, Group, Image, Stack, Title, Text, Button, Divider, Flex, Box } from '@mantine/core';
 import { NextPage } from 'next';
 import { RoutePath } from 'routes';
 import NextLink from 'next/link';
@@ -6,11 +6,18 @@ import NextImage from 'next/image';
 import cx from 'clsx';
 
 import { useRouter } from 'next/router';
+import { cartApi } from 'resources/cart';
+import { Table } from 'components';
 import classes from './index.module.css';
+import useColumns from './hooks/useColumns';
 
 const CartPage: NextPage = () => {
   const { pathname } = useRouter();
-  const products = [];
+
+  const { data } = cartApi.useGet();
+
+  const columns = useColumns();
+
   return (
     <Stack>
       <Group>
@@ -32,7 +39,7 @@ const CartPage: NextPage = () => {
         </NextLink>
       </Group>
       {
-        products.length === 0
+        !data?.results.length
           ? (
             <Center>
               <Stack className={classes.emptyState} align="center">
@@ -49,7 +56,31 @@ const CartPage: NextPage = () => {
               </Stack>
             </Center>
           )
-          : <Stack />
+          : (
+            <Flex gap={78}>
+              <Box className={classes.table}>
+                <Table
+                  columns={columns}
+                  data={data.results}
+                  perPage={Infinity}
+                  verticalSpacing="md"
+                  horizontalSpacing="xs"
+                />
+              </Box>
+              <Stack w={315} gap="xl">
+                <Title order={2} fz={20}>Summary</Title>
+                <Divider />
+                <Group justify="space-between">
+                  <Text>Total price</Text>
+                  <Text fw={700}>
+                    $
+                    {data.totalBill}
+                  </Text>
+                </Group>
+                <Button>Proceed to Checkout</Button>
+              </Stack>
+            </Flex>
+          )
       }
     </Stack>
   );

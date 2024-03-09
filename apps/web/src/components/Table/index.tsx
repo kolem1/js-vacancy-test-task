@@ -28,7 +28,7 @@ type SpacingSizes = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 interface TableProps {
   data: RowData[];
   dataCount?: number;
-  columns: ColumnDef<any>[];
+  columns: ColumnDef<any, any>[];
   horizontalSpacing?: SpacingSizes;
   verticalSpacing?: SpacingSizes;
   rowSelection?: RowSelectionState;
@@ -125,7 +125,7 @@ const Table: FC<TableProps> = ({
 
   return (
     <>
-      <Paper radius="sm" withBorder>
+      <Paper radius="sm">
         <TableContainer
           horizontalSpacing={horizontalSpacing}
           verticalSpacing={verticalSpacing}

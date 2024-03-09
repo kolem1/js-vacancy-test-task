@@ -30,9 +30,7 @@ const Thead: FC<TheadProps> = ({ isSortable, headerGroups, flexRender }) => (
           <Table.Th
             key={header.id}
             colSpan={header.colSpan}
-            style={{
-              width: header.id === 'select' ? '24px' : 'auto',
-            }}
+            w={header.id === 'select' ? '24px' : `${header.column.getSize()}%`}
           >
             {!header.isPlaceholder && (
               <UnstyledButton

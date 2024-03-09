@@ -12,7 +12,11 @@ export function useCreate<T>() {
     product: T;
   }
 
-  return useMutation<CreatResponse, unknown, T>(create);
+  return useMutation<CreatResponse, unknown, T>(create, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(['products']);
+    },
+  });
 }
 
 export function useListForUser() {
@@ -26,7 +30,8 @@ export function useRemove() {
 
   return useMutation(remove, {
     onSuccess: () => {
-      queryClient.invalidateQueries(['products', 'user']);
+      queryClient.invalidateQueries(['products']);
+      queryClient.invalidateQueries(['cart']);
     },
   });
 }
