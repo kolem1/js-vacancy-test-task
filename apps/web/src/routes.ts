@@ -12,7 +12,7 @@ export enum RoutePath {
   // Private paths
   Home = '/',
   MyProducts = '/my-products',
-  CreateNewProduct = '/create-new-product',
+  CreateNewProduct = '/my-products/create',
   Profile = '/profile',
   Cart = '/cart',
   CartHistory = '/cart/history',
