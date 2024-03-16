@@ -8,9 +8,10 @@ interface StatusBadgeProps {
 const StatusBadge = ({ isSold, className }: StatusBadgeProps) => (
   <Badge
     className={className}
-    color={isSold ? 'orange' : 'green'}
+    color={isSold ? 'green' : 'orange'}
     size="lg"
     radius="md"
+    tt="none"
   >
     {isSold ? 'Sold' : 'On sale'}
   </Badge>

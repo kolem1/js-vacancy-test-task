@@ -5,6 +5,7 @@ import add from './actions/add';
 import count from './actions/count';
 import remove from './actions/remove';
 import update from './actions/update';
+import getHistory from './actions/get-history';
 
 const publicRoutes = routeUtil.getRoutes([
 
@@ -16,6 +17,7 @@ const privateRoutes = routeUtil.getRoutes([
   count,
   remove,
   update,
+  getHistory,
 ]);
 
 const adminRoutes = routeUtil.getRoutes([

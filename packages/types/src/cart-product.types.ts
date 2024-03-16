@@ -12,3 +12,12 @@ export interface CartProductDto {
   quantity: number;
   available: number,
 }
+
+export interface CartHistoryProduct {
+  id: string;
+  title: string;
+  price: number;
+  imageUrl?: string;
+  quantity: number;
+  soldDate: string;
+}

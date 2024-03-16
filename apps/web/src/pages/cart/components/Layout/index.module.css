@@ -1,0 +1,23 @@
+.link {
+  font-size: rem(20px);
+  font-weight: 600;
+  color: var(--mantine-black-300);
+  text-decoration: none;
+
+  &.active {
+    color: var(--mantine-black-600);
+  }
+}
+
+.emptyState {
+  max-width: rem(300px);
+  text-align: center;
+}
+
+.image {
+  width: rem(208px);
+}
+
+.emptyText {
+  color: var(--mantine-black-400);
+}

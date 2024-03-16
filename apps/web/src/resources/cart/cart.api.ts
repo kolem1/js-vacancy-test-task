@@ -1,7 +1,7 @@
 import queryClient from 'query-client';
 import { useMutation, useQuery } from 'react-query';
 import { apiService } from 'services';
-import { CartProductDto } from 'types';
+import { CartHistoryProduct, CartProductDto } from 'types';
 
 export function useGet() {
   const get = () => apiService.get('/cart');
@@ -12,6 +12,16 @@ export function useGet() {
   }
 
   return useQuery<CartResponse>('cart', get);
+}
+
+export function useGetHistory() {
+  const getHistory = () => apiService.get('/cart/history');
+
+  interface CartHistoryResponse {
+    results: CartHistoryProduct[]
+  }
+
+  return useQuery<CartHistoryResponse>(['cart', 'history'], getHistory);
 }
 
 export function useAdd<T>() {
