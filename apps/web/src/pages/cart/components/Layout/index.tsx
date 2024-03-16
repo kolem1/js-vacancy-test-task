@@ -37,7 +37,7 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
           <Stack className={classes.emptyState} align="center">
             <Image className={classes.image} src="/images/empty_cart.png" width={206} height={206} component={NextImage} alt="empty cart" />
             <Title order={2} size={20}>Oops, there&apos;s nothing here yet!</Title>
-            <Text size="sm">
+            <Text className={classes.emptyText} size="sm">
               You haven&apos;t made any purchases yet.
               <br />
               Go to the marketplace and make purchases.

@@ -19,7 +19,7 @@ const NavMenu: FC = () => {
       key={link.label}
       href={link.link}
       label={link.label}
-      active={pathname === link.link}
+      active={pathname === link.link || pathname.startsWith(`${link.link}/`)}
       component={NextLink}
     />
   ));

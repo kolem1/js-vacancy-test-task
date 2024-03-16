@@ -1,0 +1,12 @@
+.wrapper {
+  max-width: rem(300px);
+  text-align: center;
+}
+
+.image {
+  width: rem(56px);
+}
+
+.text {
+  color: var(--mantine-black-400);
+}

@@ -26,7 +26,7 @@ const UserMenu: FC = () => {
         href={RoutePath.Cart}
         component={NextLink}
         className={cx(classes.cartButton, {
-          [classes.active]: pathname.startsWith(RoutePath.Cart),
+          [classes.active]: pathname === RoutePath.Cart || pathname.startsWith(`${RoutePath.Cart}/`),
         })}
       >
         <CartIcon className={classes.cartIcon} />
