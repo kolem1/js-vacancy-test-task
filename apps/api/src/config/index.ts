@@ -12,7 +12,6 @@ const schema = z.object({
   PORT: z.coerce.number().optional().default(3001),
   MONGO_URI: z.string(),
   MONGO_DB_NAME: z.string(),
-  REDIS_URI: z.string(),
   API_URL: z.string(),
   WEB_URL: z.string(),
   FIREBASE_CREDENTIALS: z.string(),
@@ -20,13 +19,6 @@ const schema = z.object({
   STRIPE_KEY: z.string(),
   STRIPE_WEBHOOK_SECRET: z.string(),
   SENDGRID_API_KEY: z.string().optional(),
-  ADMIN_KEY: z.string().optional(),
-  MIXPANEL_API_KEY: z.string().optional(),
-  CLOUD_STORAGE_ENDPOINT: z.string().optional(),
-  CLOUD_STORAGE_BUCKET: z.string().optional(),
-  CLOUD_STORAGE_ACCESS_KEY_ID: z.string().optional(),
-  CLOUD_STORAGE_SECRET_ACCESS_KEY: z.string().optional(),
-
 });
 
 type Config = z.infer<typeof schema>;

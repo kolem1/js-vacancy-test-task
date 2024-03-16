@@ -13,7 +13,6 @@ export enum RoutePath {
   Home = '/',
   MyProducts = '/my-products',
   CreateNewProduct = '/my-products/create',
-  Profile = '/profile',
   Cart = '/cart',
   CartHistory = '/cart/history',
   PaymentSuccess = '/cart/payment-success',
@@ -22,9 +21,6 @@ export enum RoutePath {
   // Auth paths
   SignIn = '/sign-in',
   SignUp = '/sign-up',
-  ForgotPassword = '/forgot-password',
-  ResetPassword = '/reset-password',
-  ExpireToken = '/expire-token',
 
   NotFound = '/404',
 }
@@ -66,10 +62,6 @@ export const routesConfiguration: RoutesConfiguration = {
     scope: ScopeType.PRIVATE,
     layout: LayoutType.MAIN,
   },
-  [RoutePath.Profile]: {
-    scope: ScopeType.PRIVATE,
-    layout: LayoutType.MAIN,
-  },
 
   // Auth routes
   [RoutePath.SignIn]: {
@@ -77,18 +69,6 @@ export const routesConfiguration: RoutesConfiguration = {
     layout: LayoutType.UNAUTHORIZED,
   },
   [RoutePath.SignUp]: {
-    scope: ScopeType.PUBLIC,
-    layout: LayoutType.UNAUTHORIZED,
-  },
-  [RoutePath.ForgotPassword]: {
-    scope: ScopeType.PUBLIC,
-    layout: LayoutType.UNAUTHORIZED,
-  },
-  [RoutePath.ResetPassword]: {
-    scope: ScopeType.PUBLIC,
-    layout: LayoutType.UNAUTHORIZED,
-  },
-  [RoutePath.ExpireToken]: {
     scope: ScopeType.PUBLIC,
     layout: LayoutType.UNAUTHORIZED,
   },

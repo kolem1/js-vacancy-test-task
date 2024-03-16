@@ -36,34 +36,10 @@ export function useSignUp<T>() {
   return useMutation<SignUpResponse, unknown, T>(signUp);
 }
 
-export function useForgotPassword<T>() {
-  const forgotPassword = (data: T) => apiService.post('/account/forgot-password', data);
-
-  return useMutation<{}, unknown, T>(forgotPassword);
-}
-
-export function useResetPassword<T>() {
-  const resetPassword = (data: T) => apiService.put('/account/reset-password', data);
-
-  return useMutation<{}, unknown, T>(resetPassword);
-}
-
-export function useResendEmail<T>() {
-  const resendEmail = (data: T) => apiService.post('/account/resend-email', data);
-
-  return useMutation<{}, unknown, T>(resendEmail);
-}
-
 export function useGet(options? : {}) {
   const get = () => apiService.get('/account');
 
   return useQuery<User>(['account'], get, options);
-}
-
-export function useUpdate<T>() {
-  const update = (data: T) => apiService.put('/account', data);
-
-  return useMutation<User, unknown, T>(update);
 }
 
 export function useUploadAvatar<T>() {
