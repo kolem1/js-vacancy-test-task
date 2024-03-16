@@ -5,6 +5,7 @@ import emailService from './email/email.service';
 import rateLimitService from './rate-limit/rate-limit.service';
 import socketService from './socket/socket.service';
 import firebaseService from './firebase/firebase.service';
+import stripeService from './stripe/stripe.service';
 
 export {
   analyticsService,
@@ -14,4 +15,5 @@ export {
   rateLimitService,
   socketService, 
   firebaseService,
+  stripeService,
 };

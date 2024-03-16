@@ -27,7 +27,7 @@ async function handler(ctx: AppKoaContext<ValidatedData>) {
   const { productId } = ctx.validatedData;
   const { user } = ctx.state;
 
-  let product = await cartProductService.findOne({ ownerId: user._id, productId });
+  let product = await cartProductService.findOne({ ownerId: user._id, productId, isActive: true });
 
   if (product) {
     product = await cartProductService.updateOne(

@@ -17,6 +17,8 @@ const schema = z.object({
   WEB_URL: z.string(),
   FIREBASE_CREDENTIALS: z.string(),
   FIREBASE_STORAGE_BUCKET: z.string(),
+  STRIPE_KEY: z.string(),
+  STRIPE_WEBHOOK_SECRET: z.string(),
   SENDGRID_API_KEY: z.string().optional(),
   ADMIN_KEY: z.string().optional(),
   MIXPANEL_API_KEY: z.string().optional(),

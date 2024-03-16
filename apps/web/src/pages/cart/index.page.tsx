@@ -8,6 +8,8 @@ import cx from 'clsx';
 import { useRouter } from 'next/router';
 import { cartApi } from 'resources/cart';
 import { Table } from 'components';
+import { checkoutApi } from 'resources/checkout';
+import Head from 'next/head';
 import classes from './index.module.css';
 import useColumns from './hooks/useColumns';
 
@@ -16,29 +18,35 @@ const CartPage: NextPage = () => {
 
   const { data } = cartApi.useGet();
 
+  const { mutate: pay } = checkoutApi.usePay();
+
   const columns = useColumns();
 
   return (
-    <Stack>
-      <Group>
-        <NextLink
-          className={cx(classes.link, {
-            [classes.active]: pathname === RoutePath.Cart,
-          })}
-          href={RoutePath.Cart}
-        >
-          My cart
-        </NextLink>
-        <NextLink
-          className={cx(classes.link, {
-            [classes.active]: pathname === RoutePath.CartHistory,
-          })}
-          href={RoutePath.CartHistory}
-        >
-          History
-        </NextLink>
-      </Group>
-      {
+    <>
+      <Head>
+        <title>Cart</title>
+      </Head>
+      <Stack>
+        <Group>
+          <NextLink
+            className={cx(classes.link, {
+              [classes.active]: pathname === RoutePath.Cart,
+            })}
+            href={RoutePath.Cart}
+          >
+            My cart
+          </NextLink>
+          <NextLink
+            className={cx(classes.link, {
+              [classes.active]: pathname === RoutePath.CartHistory,
+            })}
+            href={RoutePath.CartHistory}
+          >
+            History
+          </NextLink>
+        </Group>
+        {
         !data?.results.length
           ? (
             <Center>
@@ -77,12 +85,13 @@ const CartPage: NextPage = () => {
                     {data.totalBill}
                   </Text>
                 </Group>
-                <Button>Proceed to Checkout</Button>
+                <Button onClick={() => pay()}>Proceed to Checkout</Button>
               </Stack>
             </Flex>
           )
       }
-    </Stack>
+      </Stack>
+    </>
   );
 };
 

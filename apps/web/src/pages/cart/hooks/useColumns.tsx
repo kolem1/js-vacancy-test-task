@@ -65,12 +65,18 @@ export default function useColumns() {
       cell: (item) => {
         const { id, quantity, available } = item.getValue();
 
+        const getUpdateCountHandler = (direction: 'up' | 'down') => () => {
+          const newQuantity = direction === 'up' ? quantity + 1 : quantity - 1;
+
+          updateProduct({ id, quantity: newQuantity });
+        };
+
         return (
           <Group fz="md" gap="sm">
             <UnstyledButton
               className={classes.quantityControl}
               disabled={quantity <= 1}
-              onClick={() => updateProduct({ id, quantity: quantity - 1 })}
+              onClick={getUpdateCountHandler('down')}
             >
               <IconMinus size={20} />
             </UnstyledButton>
@@ -80,7 +86,7 @@ export default function useColumns() {
             <UnstyledButton
               className={classes.quantityControl}
               disabled={quantity >= available}
-              onClick={() => updateProduct({ id, quantity: quantity + 1 })}
+              onClick={getUpdateCountHandler('up')}
             >
               <IconPlus size={20} />
             </UnstyledButton>

@@ -7,4 +7,5 @@ export const cartProductSchema = dbSchema.extend({
   productId: z.string(),
   quantity: z.number(),
   isActive: z.boolean(),
+  soldDate: z.date().nullable().default(null),
 }).strict();

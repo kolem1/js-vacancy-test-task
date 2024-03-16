@@ -15,7 +15,6 @@ const schema = z.object({
     createdOn: z.enum(['asc', 'desc']),
   }).default({ createdOn: 'desc' }),
   filter: z.object({
-    showSold: z.boolean().nullable().default(false),
     price: z.object({
       from: validationUtil.optionalNumberFromString(),
       to: validationUtil.optionalNumberFromString(),
@@ -36,14 +35,12 @@ async function handler(ctx: AppKoaContext<ValidatedData>) {
 
   const products = await productService.find(
     {
+      isSold: false,
       $and: [
         { title: { $regex: regExp } },
         filter?.price?.from || filter?.price?.to
           ? { price: { $gte: filter.price.from ?? 0, $lt: filter.price.to ?? Infinity } }
           : {},
-        filter?.showSold === true ? {
-          isSold: true,
-        } : {},
       ],
     },
     { page, perPage },
