@@ -29,35 +29,15 @@ export function useSignOut() {
 export function useSignUp<T>() {
   const signUp = (data: T) => apiService.post('/account/sign-up', data);
 
-  interface SignUpResponse {
-    signupToken: string;
-  }
-
-  return useMutation<SignUpResponse, unknown, T>(signUp);
+  return useMutation<User, unknown, T>(signUp, {
+    onSuccess: (data) => {
+      queryClient.setQueryData(['account'], data);
+    },
+  });
 }
 
 export function useGet(options? : {}) {
   const get = () => apiService.get('/account');
 
   return useQuery<User>(['account'], get, options);
-}
-
-export function useUploadAvatar<T>() {
-  const uploadAvatar = (data: T) => apiService.post('/account/avatar', data);
-
-  return useMutation<User, unknown, T>(uploadAvatar, {
-    onSuccess: (data) => {
-      queryClient.setQueryData(['account'], data);
-    },
-  });
-}
-
-export function useRemoveAvatar() {
-  const removeAvatar = () => apiService.delete('/account/avatar');
-
-  return useMutation<User>(removeAvatar, {
-    onSuccess: (data) => {
-      queryClient.setQueryData(['account'], data);
-    },
-  });
 }

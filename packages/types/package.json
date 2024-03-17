@@ -11,7 +11,6 @@
     "@koa/router": "*",
     "enums": "workspace:*",
     "koa": "*",
-    "mailer": "workspace:*",
     "schemas": "workspace:*",
     "zod": "*"
   },
