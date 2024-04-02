@@ -1,6 +1,6 @@
 import { ComboboxItem } from '@mantine/core';
 
-export const PER_PAGE = 10;
+export const PER_PAGE = 6;
 
 export const selectOptions: ComboboxItem[] = [
   {
