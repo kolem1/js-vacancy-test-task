@@ -31,7 +31,9 @@ const Card = ({ type, product, isDeleteLoading, onDelete, onAddToCart }: CardPro
       <MantineCard.Section mb="md" maw="auto">
         <AspectRatio ratio={271 / 174}>
           <Image src={product.imageUrl} sizes="380px" component={NextImage} fill alt={product.title} />
-          <StatusBadge className={classes.badge} isSold={product.isSold} />
+          {type === 'yourProduct' && (
+            <StatusBadge className={classes.badge} isSold={product.isSold} />
+          )}
         </AspectRatio>
       </MantineCard.Section>
 
