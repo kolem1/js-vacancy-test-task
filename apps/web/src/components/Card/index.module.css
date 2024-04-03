@@ -7,6 +7,14 @@
   border: rem(1px) solid var(--mantine-black-100);
 }
 
+.cardInfo {
+  flex-grow: 1;
+}
+
+.priceWrapper {
+  margin-top: auto;
+}
+
 .price {
   font-weight: 700;
 }

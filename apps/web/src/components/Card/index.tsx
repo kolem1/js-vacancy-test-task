@@ -37,9 +37,9 @@ const Card = ({ type, product, isDeleteLoading, onDelete, onAddToCart }: CardPro
         </AspectRatio>
       </MantineCard.Section>
 
-      <Stack gap="sm">
+      <Stack className={classes.cardInfo} gap="sm">
         <Title size="20" fw={700} order={2}>{product.title}</Title>
-        <Group justify="space-between">
+        <Group className={classes.priceWrapper} justify="space-between">
           <Text size="sm" span className={classes.priceTitle}>Price:</Text>
           <Text size="xl" span className={classes.price}>
             $
