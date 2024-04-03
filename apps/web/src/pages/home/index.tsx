@@ -119,8 +119,8 @@ const Home: NextPage = () => {
             >
               <Group wrap="nowrap" justify="space-between">
                 <Title order={2} size={16}>
-                  {` ${data?.items.length} `}
-                  elements
+                  {` ${data?.count ?? 0} `}
+                  results
                 </Title>
                 <SortSelect
                   options={selectOptions}
