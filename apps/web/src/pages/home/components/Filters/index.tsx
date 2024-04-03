@@ -1,5 +1,5 @@
 import { Box, Group, NumberInput, Stack, Text, Title } from '@mantine/core';
-import { FC, useLayoutEffect, useState } from 'react';
+import { FC, useEffect, useLayoutEffect, useState } from 'react';
 
 import { useDebouncedValue } from '@mantine/hooks';
 import classes from './index.module.css';
@@ -12,15 +12,21 @@ export interface FiltersValue {
 }
 
 interface FiltersProps {
+  selectedPrices: FiltersValue['price'] | null;
   onChange: (filtersValue: FiltersValue) => void
 }
 
-const Filters: FC<FiltersProps> = ({ onChange }) => {
+const Filters: FC<FiltersProps> = ({ selectedPrices, onChange }) => {
   const [from, setFrom] = useState<string | number>(0);
   const [to, setTo] = useState<string | number>(0);
 
   const [debouncedFrom] = useDebouncedValue(from, 500);
   const [debouncedTo] = useDebouncedValue(to, 500);
+
+  useEffect(() => {
+    setFrom(selectedPrices?.from || 0);
+    setTo(selectedPrices?.to || 0);
+  }, [selectedPrices]);
 
   useLayoutEffect(() => {
     onChange({ price: {

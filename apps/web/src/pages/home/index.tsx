@@ -12,6 +12,8 @@ import {
   SimpleGrid,
   Pagination,
   Center,
+  Badge,
+  UnstyledButton,
 } from '@mantine/core';
 import { useDebouncedValue, useInputState } from '@mantine/hooks';
 
@@ -19,6 +21,7 @@ import { productApi } from 'resources/product';
 import { Card } from 'components';
 import { Product } from 'types';
 import { cartApi } from 'resources/cart';
+import { IconX } from '@tabler/icons-react';
 import { PER_PAGE, selectOptions } from './constants';
 
 import classes from './index.module.css';
@@ -47,6 +50,8 @@ const Home: NextPage = () => {
 
   const [params, setParams] = useState<UsersListParams>({});
 
+  const [selectedPrices, setSelectedPrices] = useState<{ from: number, to: number } | null>(null);
+
   const [search, setSearch] = useInputState('');
   const [debouncedSearch] = useDebouncedValue(search, 500);
 
@@ -60,6 +65,7 @@ const Home: NextPage = () => {
   }, []);
 
   const handleFilterChange = useCallback(({ price }: FiltersValue) => {
+    setSelectedPrices(price.from > 0 || price.to > 0 ? price : null);
     setParams((prev) => ({
       ...prev,
       filter: {
@@ -70,6 +76,10 @@ const Home: NextPage = () => {
       },
     }));
   }, []);
+
+  const handleResetFilter = useCallback(() => {
+    handleFilterChange({ price: { from: 0, to: 0 } });
+  }, [handleFilterChange]);
 
   const handlePageChange = useCallback((currentPageIndex:number) => {
     setPageIndex(currentPageIndex);
@@ -98,8 +108,13 @@ const Home: NextPage = () => {
         <title>Home</title>
       </Head>
       <Grid gutter="lg">
-        <Grid.Col span={3}><Filters onChange={handleFilterChange} /></Grid.Col>
-        <Grid.Col span={9}>
+        <Grid.Col span={{ base: 12, md: 3 }}>
+          <Filters
+            selectedPrices={selectedPrices}
+            onChange={handleFilterChange}
+          />
+        </Grid.Col>
+        <Grid.Col span={{ base: 12, md: 9 }}>
 
           <Stack gap="lg">
             <Skeleton
@@ -128,6 +143,30 @@ const Home: NextPage = () => {
                   handleSortByChange={handleSortByChange}
                 />
               </Group>
+            </Skeleton>
+
+            <Skeleton
+              width="auto"
+              height={42}
+              radius="sm"
+              visible={isListLoading}
+            >
+              {selectedPrices && (
+              <Group wrap="nowrap" justify="space-between">
+                <Badge
+                  classNames={{
+                    root: classes.filterBadge,
+                    label: classes.badgeLabel,
+                  }}
+                  size="xl"
+                  variant="white"
+                >
+                  {`$${selectedPrices.from}-$${selectedPrices.to}`}
+                  {' '}
+                  <UnstyledButton className={classes.deleteFilters} onClick={handleResetFilter}><IconX size={14} stroke={2} color="white" /></UnstyledButton>
+                </Badge>
+              </Group>
+              )}
             </Skeleton>
 
             {isListLoading && (

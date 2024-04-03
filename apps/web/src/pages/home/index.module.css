@@ -5,3 +5,32 @@
 .datePickerSkeleton {
   overflow: unset;
 }
+
+.filterBadge {
+  font-weight: 500;
+  font-size: var(--mantine-font-size-sm);
+  color: var(--mantine-black-600);
+
+  height: rem(36px);
+
+  border: 1px solid var(--mantine-black-100);
+}
+
+.badgeLabel {
+  display: flex;
+  align-items: center;
+}
+
+.deleteFilters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-left: rem(8px);
+
+  background: var(--mantine-black-400);
+
+  border-radius: 50%;
+  width: rem(16px);
+  height: rem(16px);
+}
