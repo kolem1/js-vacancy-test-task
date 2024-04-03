@@ -22,7 +22,6 @@ const SortSelect = ({ sortBy, options, handleSortByChange }: SortSelectProps) =>
     rightSectionWidth={20}
     comboboxProps={{
       dropdownPadding: 0,
-      withinPortal: false,
       transitionProps: {
         transition: 'pop-bottom-right',
         duration: 210,
